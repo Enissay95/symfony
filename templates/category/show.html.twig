@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories #{% endblock %}
+
+{% block body %}
+
+     {% if categoryName is not empty %}
+       <h1>Disponible dans la catégorie {{dump(categoryName)}} :</h1>
+     {% endif %}
+
+        <div class="media-body">
+
+          <ul>
+             {% for program in categoryResults %}  
+             <li>
+               {{dump(program)}}
+               <p>Programmes : {{ program.title }}</p>
+               <p>Summary : {{ program.synopsis }}</p>
+               {% else %}
+                No program's in this category.
+               
+             </li>
+              {% endfor %}
+          </ul>
+
+        </div>
+
+    <a href="{{ path('category_index') }}">
+        Retour à la liste des categories
+    </a>
+{% endblock %}
